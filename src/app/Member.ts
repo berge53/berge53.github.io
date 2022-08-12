@@ -4,5 +4,5 @@ export interface Member {
   email: string | null;
   company: string | null;
   address: string | null;
-  birthday: object | null;
+  birthday: string | object | null;
 }

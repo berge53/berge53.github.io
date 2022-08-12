@@ -7,7 +7,16 @@ import { TableComponent } from '../table/table.component';
   styleUrls: ['./members.component.css'],
 })
 export class MembersComponent implements OnInit {
-  members: Member[] = [];
+  members: Member[] = [
+    {
+      firstName: 'Virge',
+      lastName: 'Guevarra',
+      email: 'bergeguevarra@gmail.com',
+      company: 'Codebricks',
+      address: '322',
+      birthday: '2001-05-03',
+    },
+  ];
 
   constructor() {}
 

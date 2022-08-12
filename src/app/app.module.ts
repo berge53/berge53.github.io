@@ -16,11 +16,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
 import { TableComponent } from './components/table/table.component';
 import { MembersComponent } from './components/members/members.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { MembersComponent } from './components/members/members.component';
     FormComponent,
     TableComponent,
     MembersComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,8 @@ import { MembersComponent } from './components/members/members.component';
     MatButtonToggleModule,
     MatTableModule,
     MatSnackBarModule,
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

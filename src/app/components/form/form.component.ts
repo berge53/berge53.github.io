@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
-  FormControl,
+  FormBuilder,
   FormGroup,
   FormGroupDirective,
   Validators,
@@ -22,17 +22,18 @@ import { Member } from 'src/app/Member';
 export class FormComponent implements OnInit {
   @Output() onCreate: EventEmitter<Member> = new EventEmitter();
   member!: Member;
+  profileForm!: FormGroup;
 
-  profileForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    company: new FormControl(''),
-    address: new FormControl('', [Validators.required]),
-    birthday: new FormControl([Validators.required]),
-  });
-
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
+    this.profileForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      company: [''],
+      address: ['', Validators.required],
+      birthday: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -47,12 +48,22 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    this.member = this.profileForm.value as Member;
+    this.convertDate();
+
+    this.member = this.profileForm.getRawValue() as Member;
 
     this.onCreate.emit(this.member);
 
     this.formDirective.resetForm();
 
     this.snackBar.open('Form submitted!', 'OK');
+  }
+
+  convertDate() {
+    const dataObj = this.profileForm.controls['birthday'].value;
+    let date = JSON.stringify(dataObj);
+    date = date.substring(1, 11);
+
+    this.profileForm.patchValue({ birthday: date });
   }
 }
