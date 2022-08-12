@@ -1,8 +1,13 @@
+<!--- material card -->
+
 <mat-card>
+  <!--- card title -->
   <mat-card-title-group>
     <mat-card-title>Registration Form</mat-card-title>
     <mat-card-subtitle>Please input your information below.</mat-card-subtitle>
   </mat-card-title-group>
+
+  <!--- form in card content and actions -->
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
       <div class="form-group">
@@ -10,11 +15,13 @@
           <mat-label>First Name</mat-label>
           <input matInput placeholder="John" formControlName="firstName" />
         </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
           <input matInput placeholder="Doe" formControlName="lastName" />
         </mat-form-field>
       </div>
+
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label>Email Address</mat-label>
@@ -24,11 +31,13 @@
             formControlName="email"
           />
         </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>Company (if applicable)</mat-label>
           <input matInput placeholder="Codebricks" formControlName="company" />
         </mat-form-field>
       </div>
+
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label>Physical Address</mat-label>
@@ -38,6 +47,7 @@
             formControlName="address"
           />
         </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>Birthday</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="birthday" />
@@ -50,8 +60,11 @@
         </mat-form-field>
       </div>
     </mat-card-content>
+
     <mat-card-actions>
       <button mat-raised-button type="submit" color="primary">Submit</button>
     </mat-card-actions>
+
+    <!--- end of form -->
   </form>
 </mat-card>

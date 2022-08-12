@@ -14,12 +14,22 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
+import { TableComponent } from './components/table/table.component';
+import { MembersComponent } from './components/members/members.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FormComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FormComponent,
+    TableComponent,
+    MembersComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +44,8 @@ import { FormComponent } from './components/form/form.component';
     MatNativeDateModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatTableModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
