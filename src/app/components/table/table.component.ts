@@ -32,33 +32,59 @@ export class TableComponent implements OnInit {
   }
 
   openEditDialog(member: Member) {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '30%',
-      data: member,
-    });
+    const editDialog = this.dialog
+      .open(DialogComponent, {
+        width: '30%',
+        data: member,
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+          this.updateMember(member, res);
+        }
+      });
+  }
 
-    dialogRef.afterClosed().subscribe((res) => {
-      const index = this.members.map((m) => m.email).indexOf(member.email);
-      this.members[index].firstName = res.firstName
-        ? res.firstName
-        : this.members[index].firstName;
-      this.members[index].lastName = res.lastName
-        ? res.lastName
-        : this.members[index].lastName;
-      this.members[index].email = res.email
-        ? res.email
-        : this.members[index].email;
-      this.members[index].company = res.company
-        ? res.company
-        : this.members[index].company;
-      this.members[index].address = res.address
-        ? res.address
-        : this.members[index].address;
-      this.members[index].birthday = res.birthday
-        ? res.birthday
-        : this.members[index].birthday;
+  updateMember(member: Member, res: Member) {
+    const index = this.members.map((m) => m.email).indexOf(res.email);
+    this.members[index].firstName = res.firstName
+      ? res.firstName
+      : this.members[index].firstName;
+    this.members[index].lastName = res.lastName
+      ? res.lastName
+      : this.members[index].lastName;
+    this.members[index].email = res.email
+      ? res.email
+      : this.members[index].email;
+    this.members[index].company = res.company
+      ? res.company
+      : this.members[index].company;
+    this.members[index].address = res.address
+      ? res.address
+      : this.members[index].address;
+    this.members[index].birthday = res.birthday
+      ? res.birthday
+      : this.members[index].birthday;
 
-      this.updateTable();
-    });
+    this.updateTable();
+  }
+
+  openDeleteDialog(member: Member) {
+    const deleteDialog = this.dialog
+      .open(DialogComponent, {
+        width: '30%',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+          this.deleteMember(member);
+        }
+      });
+  }
+
+  deleteMember(member: Member) {
+    const index = this.members.map((m) => m.email).indexOf(member.email);
+    this.members.splice(index, 1);
+    this.updateTable();
   }
 }

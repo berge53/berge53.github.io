@@ -1,10 +1,10 @@
-<!--- card title -->
+<!--- title -->
 <h2 mat-dialog-title>
-  <mat-card-title>Edit Form</mat-card-title>
+  <mat-card-title>{{ editMode ? "Edit Form" : "Delete" }}</mat-card-title>
 </h2>
 
-<!--- form in card content and actions -->
-<form [formGroup]="editForm" (submit)="onUpdate()">
+<!--- editMode -->
+<form *ngIf="editMode" [formGroup]="editForm" (submit)="onUpdate()">
   <mat-dialog-content>
     <div class="form-group">
       <mat-form-field appearance="outline">
@@ -55,8 +55,24 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-raised-button type="submit" color="primary">Update</button>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+    <button mat-raised-button type="button" (click)="onCancel()" color="warn">
+      Cancel
+    </button>
   </mat-dialog-actions>
 
   <!--- end of form -->
 </form>
+
+<!--- delete -->
+<div *ngIf="!editMode">
+  <mat-dialog-content>
+    <p>Are you sure you want to delete?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="onDelete()" color="primary">
+      Delete
+    </button>
+    <button mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
+  </mat-dialog-actions>
+</div>

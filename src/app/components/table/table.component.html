@@ -34,9 +34,9 @@
   <ng-container matColumnDef="options">
     <mat-header-cell *matHeaderCellDef>Options</mat-header-cell>
     <mat-cell *matCellDef="let member"
-      ><button mat-icon-button (click)="openEditDialog(member)">
+      ><button mat-icon-button color="primary" (click)="openEditDialog(member)">
         <mat-icon>edit</mat-icon></button
-      ><button mat-icon-button color="warn">
+      ><button mat-icon-button color="warn" (click)="openDeleteDialog(member)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>
