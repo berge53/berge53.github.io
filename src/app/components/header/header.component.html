@@ -1,3 +1,7 @@
 <mat-toolbar color="primary">
   <span>Forms App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="{{ hasRoute('/') ? 'about' : '/' }}">
+    <mat-icon>home</mat-icon>
+  </button>
 </mat-toolbar>

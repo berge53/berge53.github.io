@@ -24,6 +24,7 @@ import { FormComponent } from './components/form/form.component';
 import { TableComponent } from './components/table/table.component';
 import { MembersComponent } from './components/members/members.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     TableComponent,
     MembersComponent,
     DialogComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
