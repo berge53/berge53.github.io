@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Member } from 'src/app/Member';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -21,7 +22,7 @@ export class TableComponent implements OnInit {
     'options',
   ];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
 
   @ViewChild(MatTable) table!: MatTable<any>;
 
@@ -67,6 +68,7 @@ export class TableComponent implements OnInit {
       : this.members[index].birthday;
 
     this.updateTable();
+    this.snackBar.open('Member updated!', 'OK');
   }
 
   openDeleteDialog(member: Member) {
@@ -86,5 +88,6 @@ export class TableComponent implements OnInit {
     const index = this.members.map((m) => m.email).indexOf(member.email);
     this.members.splice(index, 1);
     this.updateTable();
+    this.snackBar.open('Member deleted!', 'OK');
   }
 }

@@ -48,15 +48,27 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    this.convertDate();
-
-    this.member = this.profileForm.getRawValue() as Member;
+    this.getFormValues();
 
     this.onCreate.emit(this.member);
 
     this.formDirective.resetForm();
 
     this.snackBar.open('Form submitted!', 'OK');
+  }
+
+  getFormValues() {
+    this.convertDate();
+
+    this.member = this.profileForm.getRawValue() as Member;
+
+    this.member.firstName = this.member.firstName!.trim();
+    this.member.lastName = this.member.lastName!.trim();
+    this.member.email = this.member.email!.trim();
+    this.member.company = this.member.company
+      ? this.member.company!.trim()
+      : 'NA';
+    this.member.address = this.member.address!.trim();
   }
 
   convertDate() {

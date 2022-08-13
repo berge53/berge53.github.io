@@ -16,9 +16,7 @@
 
   <ng-container matColumnDef="company">
     <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
-    <mat-cell *matCellDef="let member">{{
-      member.company ? member.company : "NA"
-    }}</mat-cell>
+    <mat-cell *matCellDef="let member">{{ member.company }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="address">
